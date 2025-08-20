@@ -1,353 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Maxwell Thompson • Projects</title>
-  <meta name="description" content="Simple one-page portfolio: Landis+Gyr work, drone project, CS50 AI projects, and an inline code runner." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Prism for code highlighting -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"/>
-
-  <style>
-    :root{
-      --bg:#0c0f13; --panel:#121720; --soft:#0f141c; --text:#e8eef6; --muted:#a3b0c2;
-      --brand:#67e8f9; --brand2:#8b5cf6; --radius:16px; --shadow:rgba(0,0,0,.45);
-      --maxw:1000px;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:
-      radial-gradient(900px 600px at 100% -10%, rgba(139,92,246,.12), transparent 60%),
-      radial-gradient(800px 500px at -10% -10%, rgba(103,232,249,.10), transparent 50%),
-      var(--bg); color:var(--text); line-height:1.6}
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:var(--maxw);margin:0 auto;padding:0 18px}
-    header{position:sticky;top:0;z-index:10;background:rgba(12,15,19,.7);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
-    .logo{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 8px 24px rgba(139,92,246,.35)}
-    .links{display:flex;gap:14px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--soft);border:1px solid rgba(255,255,255,.06);color:var(--text)}
-    .btn:hover{background:#141b26}
-    .hero{padding:54px 0 28px}
-    h1{font-size:clamp(26px,4.5vw,46px);line-height:1.15;margin:0 0 8px}
-    h2{font-size:clamp(20px,3.2vw,30px);margin:0 0 8px}
-    .lead{color:var(--muted);max-width:65ch}
-    section{padding:30px 0}
-    .panel{background:linear-gradient(180deg, rgba(255,255,255,.02), transparent), var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:0 10px 30px var(--shadow)}
-    .card{padding:16px;border-radius:var(--radius)}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-    .span-6{grid-column:span 12}
-    @media(min-width:800px){.span-6{grid-column:span 6}}
-    .media{aspect-ratio:16/9;background:#0b1118;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
-    .media img, .media iframe{width:100%;height:100%;object-fit:cover;border:0}
-    .badges{display:flex;gap:8px;flex-wrap:wrap}
-    .badge{font-size:12px;padding:4px 10px;border-radius:999px;background:rgba(110,231,245,.12);border:1px solid rgba(110,231,245,.35);color:#d9fbff}
-    .codebox{background:#0a0f15;border:1px solid rgba(255,255,255,.08);border-radius:12px}
-    .runner{display:grid;gap:10px}
-    .runner textarea{width:100%;min-height:160px;background:#0a0f15;color:#e8eef6;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
-    .runner pre{margin:0;max-height:220px;overflow:auto}
-    .tabs{display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap}
-    .chip{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:var(--soft);cursor:pointer}
-    .chip[aria-pressed="true"]{outline:2px solid rgba(103,232,249,.35);background:#18222e}
-    footer{padding:40px 0 60px;color:var(--muted);text-align:center}
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Projects Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <header>
-    <div class="container nav">
-      <div class="brand"><div class="logo" aria-hidden="true"></div><span>Maxwell Thompson</span></div>
-      <nav class="links">
-        <a class="btn" href="#landis">Landis+Gyr</a>
-        <a class="btn" href="#drone">Drone</a>
-        <a class="btn" href="#cs50">CS50 AI</a>
-        <a class="btn" href="#runner">Code Runner</a>
-      </nav>
-    </div>
-  </header>
+<body class="bg-gray-100 text-gray-900">
+  <div class="max-w-5xl mx-auto py-10 px-4 space-y-16">
 
-  <main class="container">
-    <section class="hero">
-      <h1>Projects & Builds</h1>
-      <p class="lead">A single-page snapshot of my recent work — Landis+Gyr testing UI, a custom FPV drone, and CS50 AI projects. Plus a small in-browser code runner.</p>
-      <div class="badges" style="margin-top:10px">
-        <span class="badge">Hardware</span>
-        <span class="badge">Software</span>
-        <span class="badge">AI</span>
+    <!-- Landis+Gyr Section -->
+    <section>
+      <h2 class="text-3xl font-bold mb-4">Work at Landis+Gyr</h2>
+      <img src="assets/landis.jpg" alt="Landis+Gyr Project" class="rounded-2xl shadow mb-4">
+      <p class="text-gray-700">Details about my contributions at Landis+Gyr will go here. You can describe your UI development work, hardware integration, and test fixture interfaces.</p>
+    </section>
+
+    <!-- Drone Project Section -->
+    <section>
+      <h2 class="text-3xl font-bold mb-4">Drone Project</h2>
+      <img src="assets/drone.jpg" alt="Drone Project" class="rounded-2xl shadow mb-4">
+      <p class="text-gray-700 mb-4">This project showcases my custom-built drone. Watch the video below:</p>
+      <div class="aspect-w-16 aspect-h-9">
+        <iframe class="w-full h-96 rounded-2xl shadow" src="https://www.youtube.com/embed/10lQD06BJFE" frameborder="0" allowfullscreen></iframe>
       </div>
     </section>
 
-    <!-- Landis+Gyr -->
-    <section id="landis">
-      <h2>Landis+Gyr — Test Fixture UI</h2>
-      <p class="lead">PyQt6 UI interfacing with serial instruments and CT hardware (SCPI, I²C, GPIO). Includes jog sequencing and safe source activation.</p>
-      <div class="panel card">
-        <div class="grid">
-          <div class="span-6">
-            <div class="media"><img src="assets/dashboard.jpg" alt="Testing fixture UI screenshot"/></div>
-          </div>
-          <div class="span-6">
-            <ul>
-              <li>Manual control + scripted runs for current/voltage sources (SCPI over serial).</li>
-              <li>Non-blocking waits; strict sequencing: force-off → CT setup → routing → safe activation.</li>
-              <li>Logs, progress, and error handling for long-running tests.</li>
-            </ul>
-            <p><a href="#" target="_blank" rel="noopener">Overview / Docs</a> · <a href="#" target="_blank" rel="noopener">Screenshots</a></p>
-          </div>
+    <!-- CS50 Projects Section -->
+    <section>
+      <h2 class="text-3xl font-bold mb-4">CS50 Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-4 bg-white rounded-2xl shadow">
+          <h3 class="text-xl font-semibold mb-2">Degrees</h3>
+          <p class="text-gray-600 mb-2">Search for shortest path of relationships in a dataset of actors and movies (CS50 AI Project).</p>
+          <a href="https://github.com/max35243524-ops/cs50/tree/main/degrees" target="_blank" class="text-blue-600 hover:underline">View Project on GitHub</a>
         </div>
-      </div>
-    </section>
-
-    <!-- Drone -->
-    <section id="drone">
-      <h2>Custom FPV Drone</h2>
-      <p class="lead">From parts selection to PID tuning and test flights. Short reel below; build notes and BOM on the right.</p>
-      <div class="panel card">
-        <div class="grid">
-          <div class="span-6">
-            <div class="media">
-              <!-- Your YouTube Short -->
-              <iframe src="https://www.youtube.com/embed/10lQD06BJFE" title="Drone Project Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-          </div>
-          <div class="span-6">
-            <h3 style="margin-top:0">Build Notes</h3>
-            <ul>
-              <li>5" frame, 2207 motors, BLHeli_32 ESC, F4 FC.</li>
-              <li>Betaflight PID tune; receiver failsafe + beeper.</li>
-              <li>Vibration mitigation with soft mounts, balanced props.</li>
-            </ul>
-            <p><a href="#" target="_blank" rel="noopener">Full write-up</a> · <a href="#" target="_blank" rel="noopener">Gallery</a> · <a href="#" target="_blank" rel="noopener">Parts list</a></p>
-          </div>
+        <div class="p-4 bg-white rounded-2xl shadow">
+          <h3 class="text-xl font-semibold mb-2">Knights</h3>
+          <p class="text-gray-600 mb-2">Solve logic puzzles using propositional logic (CS50 AI Project).</p>
+          <a href="https://github.com/max35243524-ops/cs50/tree/main/knights" target="_blank" class="text-blue-600 hover:underline">View Project on GitHub</a>
+        </div>
+        <div class="p-4 bg-white rounded-2xl shadow">
+          <h3 class="text-xl font-semibold mb-2">Minesweeper</h3>
+          <p class="text-gray-600 mb-2">Build an AI that plays the classic Minesweeper game intelligently (CS50 AI Project).</p>
+          <a href="https://github.com/max35243524-ops/cs50/tree/main/minesweeper" target="_blank" class="text-blue-600 hover:underline">View Project on GitHub</a>
+        </div>
+        <div class="p-4 bg-white rounded-2xl shadow">
+          <h3 class="text-xl font-semibold mb-2">Tic Tac Toe</h3>
+          <p class="text-gray-600 mb-2">Implement a minimax AI that plays Tic Tac Toe optimally (CS50 AI Project).</p>
+          <a href="https://github.com/max35243524-ops/cs50/tree/main/tictactoe" target="_blank" class="text-blue-600 hover:underline">View Project on GitHub</a>
         </div>
       </div>
     </section>
 
-    <!-- CS50 -->
-    <section id="cs50">
-      <h2>CS50 AI Projects</h2>
-      <p class="lead">Four projects from the course. Click through to the repos, and see inline code previews below.</p>
-      <div class="grid">
-        <article class="panel card span-6">
-          <h3 style="margin-top:0">Degrees</h3>
-          <p>Shortest-path search on a graph of actors and movies.</p>
-          <p><a href="https://github.com/max35243524-ops/cs50/tree/main/degrees" target="_blank" rel="noopener">GitHub folder</a></p>
-        </article>
-        <article class="panel card span-6">
-          <h3 style="margin-top:0">Knights</h3>
-          <p>Logic puzzle solver using propositional logic.</p>
-          <p><a href="https://github.com/max35243524-ops/cs50/tree/main/knights" target="_blank" rel="noopener">GitHub folder</a></p>
-        </article>
-        <article class="panel card span-6">
-          <h3 style="margin-top:0">Minesweeper</h3>
-          <p>AI that plays the classic Minesweeper intelligently.</p>
-          <p><a href="https://github.com/max35243524-ops/cs50/tree/main/minesweeper" target="_blank" rel="noopener">GitHub folder</a></p>
-        </article>
-        <article class="panel card span-6">
-          <h3 style="margin-top:0">Tic Tac Toe</h3>
-          <p>Minimax AI that plays optimally.</p>
-          <p><a href="https://github.com/max35243524-ops/cs50/tree/main/tictactoe" target="_blank" rel="noopener">GitHub folder</a></p>
-        </article>
-      </div>
-
-      <!-- Inline code previews -->
-      <div class="panel card" style="margin-top:16px">
-        <h3 style="margin-top:0">Inline Code Previews</h3>
-        <p class="lead">Read-only views of key files from each project. Click the GitHub link to see the repo.</p>
-        <div class="grid">
-          <article class="span-6">
-            <div class="badges">
-              <span class="badge">degrees.py</span>
-              <a class="btn" href="https://github.com/max35243524-ops/cs50/tree/main/degrees" target="_blank" rel="noopener">Open on GitHub</a>
-              <button class="btn" data-copy="#code-degrees">Copy</button>
-            </div>
-            <pre class="codebox"><code id="code-degrees" class="language-python">Loading…</code></pre>
-          </article>
-          <article class="span-6">
-            <div class="badges">
-              <span class="badge">puzzle.py</span>
-              <a class="btn" href="https://github.com/max35243524-ops/cs50/tree/main/knights" target="_blank" rel="noopener">Open on GitHub</a>
-              <button class="btn" data-copy="#code-knights">Copy</button>
-            </div>
-            <pre class="codebox"><code id="code-knights" class="language-python">Loading…</code></pre>
-          </article>
-          <article class="span-6">
-            <div class="badges">
-              <span class="badge">minesweeper.py</span>
-              <a class="btn" href="https://github.com/max35243524-ops/cs50/tree/main/minesweeper" target="_blank" rel="noopener">Open on GitHub</a>
-              <button class="btn" data-copy="#code-minesweeper">Copy</button>
-            </div>
-            <pre class="codebox"><code id="code-minesweeper" class="language-python">Loading…</code></pre>
-          </article>
-          <article class="span-6">
-            <div class="badges">
-              <span class="badge">tictactoe.py</span>
-              <a class="btn" href="https://github.com/max35243524-ops/cs50/tree/main/tictactoe" target="_blank" rel="noopener">Open on GitHub</a>
-              <button class="btn" data-copy="#code-tictactoe">Copy</button>
-            </div>
-            <pre class="codebox"><code id="code-tictactoe" class="language-python">Loading…</code></pre>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Code Runner -->
-    <section id="runner">
-      <h2>Inline Code Runner (Client-side)</h2>
-      <p class="lead">Run small snippets directly in the browser. Python via <a href="https://pyodide.org/" target="_blank" rel="noopener">Pyodide</a>; JavaScript runs natively. Great for demos (no internet, limited packages).</p>
-      <div class="panel card">
-        <div class="tabs" role="toolbar" aria-label="Language tabs">
-          <button class="chip" aria-pressed="true" data-lang="python">Python</button>
-          <button class="chip" aria-pressed="false" data-lang="javascript">JavaScript</button>
-        </div>
-
-        <!-- Python runner -->
-        <div class="runner" data-block="python">
-<textarea id="py-code">print("Hello from Pyodide!")
-for i in range(3):
-    print("tick", i)
-</textarea>
-          <div>
-            <button class="btn" id="py-run" disabled>Loading Python…</button>
-            <span id="py-status" class="lead" style="margin-left:8px;color:var(--muted)"></span>
-          </div>
-          <div class="codebox">
-            <pre><code id="py-out" class="language-none"></code></pre>
-          </div>
-        </div>
-
-        <!-- JS runner -->
-        <div class="runner" data-block="javascript" style="display:none">
-<textarea id="js-code">console.log("Hello from JS!");
-[1,2,3].map(x => x*x).forEach(v => console.log(v));
-</textarea>
-          <div><button class="btn" id="js-run">Run JavaScript</button></div>
-          <div class="codebox">
-            <pre><code id="js-out" class="language-none"></code></pre>
-          </div>
-        </div>
-
-        <p class="lead" style="margin-top:12px">For heavy demos, link a Colab or embed Replit/StackBlitz.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container"><small>© <span id="year"></span> Maxwell Thompson • Hosted on GitHub Pages</small></div>
-  </footer>
-
-  <!-- Prism -->
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
-
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Tabs switcher
-    const chips = document.querySelectorAll('.tabs .chip');
-    const blocks = document.querySelectorAll('[data-block]');
-    chips.forEach(chip => chip.addEventListener('click', () => {
-      chips.forEach(c => c.setAttribute('aria-pressed','false'));
-      chip.setAttribute('aria-pressed','true');
-      const lang = chip.dataset.lang;
-      blocks.forEach(b => b.style.display = (b.dataset.block === lang) ? '' : 'none');
-    }));
-
-    // JS runner
-    const jsBtn = document.getElementById('js-run');
-    const jsCode = document.getElementById('js-code');
-    const jsOut = document.getElementById('js-out');
-    jsBtn?.addEventListener('click', () => {
-      jsOut.textContent = '';
-      const _log = console.log;
-      const lines = [];
-      console.log = (...args) => { lines.push(args.join(' ')); _log.apply(console, args); };
-      try { new Function(jsCode.value)(); }
-      catch (e) { lines.push('Error: ' + e.message); }
-      console.log = _log;
-      jsOut.textContent = lines.join('\n');
-      Prism.highlightElement(jsOut);
-    });
-  </script>
-
-  <!-- Pyodide + multi-file previews + copy buttons -->
-  <script>
-    (async function(){
-      // Load Pyodide
-      const status = document.getElementById('py-status');
-      const btn = document.getElementById('py-run');
-      try {
-        status.textContent = 'Fetching Python runtime…';
-        const pyodideSrc = 'https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js';
-        await new Promise((resolve, reject) => {
-          const s = document.createElement('script');
-          s.src = pyodideSrc; s.onload = resolve; s.onerror = () => reject(new Error('Failed to load Pyodide'));
-          document.head.appendChild(s);
-        });
-        window.pyodide = await loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.24.1/full/' });
-        status.textContent = 'Ready';
-        btn.disabled = false;
-      } catch (e){
-        status.textContent = 'Load error: ' + e.message;
-      }
-
-      // Python run
-      const pyBtn = document.getElementById('py-run');
-      const pyCode = document.getElementById('py-code');
-      const pyOut = document.getElementById('py-out');
-      pyBtn?.addEventListener('click', async () => {
-        pyOut.textContent = '';
-        if (!window.pyodide){ pyOut.textContent = 'Pyodide not loaded.'; return; }
-        try {
-          const result = await window.pyodide.runPythonAsync(pyCode.value);
-          if (result !== undefined) pyOut.textContent += String(result) + '\n';
-        } catch (e){ pyOut.textContent = 'Error: ' + e.message; }
-        Prism.highlightElement(pyOut);
-      });
-
-      // Inline code previews (from your cs50 repo)
-      const files = [
-        { id: 'code-degrees',     url: 'https://raw.githubusercontent.com/max35243524-ops/cs50/main/degrees/degrees.py' },
-        { id: 'code-knights',     url: 'https://raw.githubusercontent.com/max35243524-ops/cs50/main/knights/puzzle.py' },
-        { id: 'code-minesweeper', url: 'https://raw.githubusercontent.com/max35243524-ops/cs50/main/minesweeper/minesweeper.py' },
-        { id: 'code-tictactoe',   url: 'https://raw.githubusercontent.com/max35243524-ops/cs50/main/tictactoe/tictactoe.py' },
-      ];
-      for (const f of files){
-        const el = document.getElementById(f.id);
-        if (!el) continue;
-        try{
-          const r = await fetch(f.url, { cache: 'no-store' });
-          if(!r.ok) throw new Error(r.status + ' ' + r.statusText);
-          el.textContent = await r.text();
-          Prism.highlightElement(el);
-        }catch(e){
-          el.textContent = 'Failed to load: ' + f.url + ' ('+ e.message +')';
-        }
-      }
-
-      // Copy buttons for previews
-      document.querySelectorAll('[data-copy]').forEach(btn => {
-        btn.addEventListener('click', async () => {
-          try{
-            const target = document.querySelector(btn.dataset.copy);
-            if (!target) return;
-            await navigator.clipboard.writeText(target.textContent);
-            const old = btn.textContent;
-            btn.textContent = 'Copied!';
-            setTimeout(() => btn.textContent = old, 1200);
-          }catch(_){
-            const old = btn.textContent;
-            btn.textContent = 'Copy failed';
-            setTimeout(() => btn.textContent = old, 1200);
-          }
-        });
-      });
-    })();
-  </script>
+  </div>
 </body>
 </html>
