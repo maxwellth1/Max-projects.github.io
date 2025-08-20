@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name • Projects</title>
+  <meta name="description" content="A clean, responsive portfolio for showcasing projects (code and non-code)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --bg-soft: #131a22;
+      --card: #10161d;
+      --text: #eef2f7;
+      --muted: #a2adbd;
+      --brand: #6ee7f5;
+      --brand-2: #8b5cf6;
+      --ring: rgba(110, 231, 245, 0.35);
+      --shadow: rgba(0,0,0,.4);
+      --maxw: 1100px;
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 100% -10%, rgba(139,92,246,.15), transparent 60%),
+                  radial-gradient(1000px 700px at -10% -10%, rgba(110,231,245,.12), transparent 50%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: saturate(140%) blur(8px);
+      background: linear-gradient(180deg, rgba(11,15,20,.95), rgba(11,15,20,.75));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav { display:flex; align-items:center; justify-content:space-between; height:64px; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.3px; }
+    .logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 8px 30px var(--ring); }
+    .links { display:flex; gap:18px; }
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; background: var(--bg-soft); color: var(--text); border:1px solid rgba(255,255,255,.06); box-shadow: 0 6px 18px var(--shadow); text-decoration:none; }
+    .btn:hover { background:#19222d; }
+
+    /* Hero */
+    .hero { padding: 64px 0 28px; }
+    .hero h1 { font-size: clamp(28px, 4.5vw, 48px); line-height: 1.15; margin: 0 0 14px; }
+    .hero p { color: var(--muted); margin: 0 0 22px; max-width: 60ch; }
+    .pill { display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; background: rgba(139,92,246,.12); border:1px solid rgba(139,92,246,.35); color:#e9ddff; font-weight:600; }
+
+    /* Section heading */
+    .section { padding: 28px 0; }
+    .section h2 { font-size: clamp(22px, 3.2vw, 32px); margin: 0 0 6px; }
+    .section p.lead { color: var(--muted); margin-top: 0; }
+
+    /* Grid */
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+
+    /* Card */
+    .card { grid-column: span 12; background: linear-gradient(180deg, rgba(255,255,255,.02), transparent), var(--card); border: 1px solid rgba(255,255,255,.06); border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 30px var(--shadow); transition: transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 18px 50px var(--shadow); }
+    .media { aspect-ratio: 16/9; background: #0c1218; position: relative; overflow: hidden; }
+    .media img { position:absolute; inset:0; width:100%; height:100%; object-fit: cover; }
+    .content { padding: 18px; display:grid; gap: 12px; }
+    .title { display:flex; align-items:center; justify-content:space-between; gap: 10px; }
+    .title h3 { margin:0; font-size: 20px; }
+    .badges { display:flex; flex-wrap:wrap; gap:8px; }
+    .badge { padding:4px 10px; border-radius: 999px; font-size: 12px; background: rgba(110,231,245,.12); border:1px solid rgba(110,231,245,.35); color:#d9fbff; }
+    .desc { color: var(--muted); }
+    .actions { display:flex; gap:10px; flex-wrap:wrap; }
+
+    /* Responsive spans */
+    .span-6 { grid-column: span 12; }
+    @media (min-width: 800px) { .span-6 { grid-column: span 6; } }
+
+    /* Footer */
+    footer { padding: 40px 0 60px; color: var(--muted); text-align:center; }
+
+    /* Simple filter */
+    .filters { display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px; }
+    .chip { padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.08); background: var(--bg-soft); cursor:pointer; }
+    .chip[aria-pressed="true"] { outline:2px solid var(--ring); background:#182028; }
+    .hidden { display:none !important; }
+
+    /* Utility */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Your Name</span>
+      </div>
+      <nav class="links">
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#about">About</a>
+        <a class="btn" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="pill">Portfolio • Projects & Builds</span>
+      <h1>Showcasing real-world projects — code and beyond.</h1>
+      <p>From hardware builds like drones and fixtures to software experiments and essays. Each project has a quick summary, visuals, and links for a deeper dive.</p>
+      <div class="actions">
+        <a class="btn" href="#projects">Browse Projects</a>
+        <a class="btn" href="https://github.com/" target="_blank" rel="noopener">View GitHub</a>
+      </div>
+    </section>
+
+    <!-- Featured project (full width) -->
+    <section class="section" id="featured">
+      <h2>Featured</h2>
+      <p class="lead">A flagship project you want front and center.</p>
+      <div class="grid">
+        <article class="card" data-tags="hardware drone video">
+          <div class="media">
+            <!-- Replace with your image -->
+            <img src="assets/drone-hero.jpg" alt="Your custom FPV drone hovering over a field" />
+          </div>
+          <div class="content">
+            <div class="title">
+              <h3>Custom FPV Drone Build</h3>
+              <div class="badges">
+                <span class="badge">Hardware</span>
+                <span class="badge">Build Log</span>
+                <span class="badge">FPV</span>
+              </div>
+            </div>
+            <p class="desc">A from-scratch FPV quadcopter: frame selection, motor/ESC pairing, F4 flight controller tuning, and GoPro mounting. Includes test flights, bill of materials, and safety notes.</p>
+            <div class="actions">
+              <a class="btn" href="#" target="_blank" rel="noopener">Project Write‑up</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Demo Video</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Gallery</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Project gallery with filters -->
+    <section class="section" id="projects">
+      <h2>Projects</h2>
+      <p class="lead">Filter by type to find what interests you.</p>
+      <div class="filters" role="toolbar" aria-label="Project filters">
+        <button class="chip" aria-pressed="true" data-filter="all">All</button>
+        <button class="chip" aria-pressed="false" data-filter="hardware">Hardware</button>
+        <button class="chip" aria-pressed="false" data-filter="software">Software</button>
+        <button class="chip" aria-pressed="false" data-filter="essay">Essay</button>
+        <button class="chip" aria-pressed="false" data-filter="video">Video</button>
+      </div>
+
+      <div class="grid" id="project-grid">
+        <!-- CARD TEMPLATE: duplicate and customize -->
+        <article class="card span-6" data-tags="hardware drone">
+          <div class="media"><img src="assets/drone-closeup.jpg" alt="Close-up of drone motor and ESC wiring" /></div>
+          <div class="content">
+            <div class="title">
+              <h3>Drone: Wiring & Tuning</h3>
+              <div class="badges"><span class="badge">Hardware</span></div>
+            </div>
+            <p class="desc">Step-by-step phases for ESC calibration, PID tuning, receiver failsafe setup, and vibration mitigation.</p>
+            <div class="actions">
+              <a class="btn" href="#" target="_blank" rel="noopener">Guide</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Parts List</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card span-6" data-tags="software web">
+          <div class="media"><img src="assets/dashboard.jpg" alt="Screenshot of analytics dashboard" /></div>
+          <div class="content">
+            <div class="title">
+              <h3>Testing Fixture UI</h3>
+              <div class="badges"><span class="badge">Software</span><span class="badge">UI</span></div>
+            </div>
+            <p class="desc">A PyQt6 app interfacing with serial instruments (voltage/current sources), GPIO, and I²C for routing and ranging.</p>
+            <div class="actions">
+              <a class="btn" href="#" target="_blank" rel="noopener">Overview</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Screenshots</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card span-6" data-tags="essay hardware">
+          <div class="media"><img src="assets/whitepaper.jpg" alt="Printed technical paper on a desk" /></div>
+          <div class="content">
+            <div class="title">
+              <h3>Design Notes: Current Transformer Safety</h3>
+              <div class="badges"><span class="badge">Essay</span><span class="badge">Hardware</span></div>
+            </div>
+            <p class="desc">A practical guide on sequencing sources off/on, non‑blocking waits, and safe activation—lessons learned from lab work.</p>
+            <div class="actions">
+              <a class="btn" href="#" target="_blank" rel="noopener">Read</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card span-6" data-tags="video hardware">
+          <div class="media"><img src="assets/flight.jpg" alt="Drone in flight over campus" /></div>
+          <div class="content">
+            <div class="title">
+              <h3>Flight Test Reel</h3>
+              <div class="badges"><span class="badge">Video</span><span class="badge">Hardware</span></div>
+            </div>
+            <p class="desc">Compilation of test flights across different prop/motor combos, with notes on balance and throttle curves.</p>
+            <div class="actions">
+              <a class="btn" href="#" target="_blank" rel="noopener">Watch</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- HOW TO ADD MORE PROJECTS
+        1) Duplicate any <article class="card ..."> block above.
+        2) Replace image src + alt, title, badges, description, and links.
+        3) Update data-tags (space-separated): e.g., "hardware drone", "software web", "essay".
+        4) Put your images in /assets and update paths.
+      -->
+    </section>
+
+    <section class="section" id="about">
+      <h2>About</h2>
+      <p class="lead">Brief bio and what you love building.</p>
+      <p>Write 2–3 sentences about your background and interests. Mention materials you’ve worked with (e.g., carbon frames, ESCs, SCPI-controlled sources, PyQt6 UIs) and what you’re exploring next.</p>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <p class="lead">Links & reach‑outs.</p>
+      <div class="actions">
+        <a class="btn" href="mailto:you@example.com">Email</a>
+        <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+        <a class="btn" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>© <span id="year"></span> Your Name. Built with HTML/CSS. Hosted on GitHub Pages.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple filter logic
+    const chips = document.querySelectorAll('.chip');
+    const cards = document.querySelectorAll('#project-grid .card');
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
+        chip.setAttribute('aria-pressed', 'true');
+        const f = chip.dataset.filter;
+        cards.forEach(card => {
+          if (f === 'all') { card.classList.remove('hidden'); return; }
+          const tags = (card.dataset.tags || '').split(/\s+/);
+          card.classList.toggle('hidden', !tags.includes(f));
+        });
+      });
+    });
+  </script>
+</body>
+</html>
