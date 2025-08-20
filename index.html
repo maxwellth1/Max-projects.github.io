@@ -3,279 +3,319 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name • Projects</title>
-  <meta name="description" content="A clean, responsive portfolio for showcasing projects (code and non-code)." />
+  <title>Maxwell Thompson • Projects</title>
+  <meta name="description" content="A simple one‑page portfolio for hardware and software projects." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Prism for code highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"/>
   <style>
-    :root {
-      --bg: #0b0f14;
-      --bg-soft: #131a22;
-      --card: #10161d;
-      --text: #eef2f7;
-      --muted: #a2adbd;
-      --brand: #6ee7f5;
-      --brand-2: #8b5cf6;
-      --ring: rgba(110, 231, 245, 0.35);
-      --shadow: rgba(0,0,0,.4);
-      --maxw: 1100px;
-      --radius: 18px;
+    :root{
+      --bg:#0c0f13; --panel:#121720; --soft:#0f141c; --text:#e8eef6; --muted:#a3b0c2;
+      --brand:#67e8f9; --brand2:#8b5cf6; --radius:16px; --shadow:rgba(0,0,0,.45);
+      --maxw:1000px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: radial-gradient(1200px 800px at 100% -10%, rgba(139,92,246,.15), transparent 60%),
-                  radial-gradient(1000px 700px at -10% -10%, rgba(110,231,245,.12), transparent 50%),
-                  var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { color: var(--brand); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
-
-    /* Header */
-    header {
-      position: sticky; top: 0; z-index: 10;
-      backdrop-filter: saturate(140%) blur(8px);
-      background: linear-gradient(180deg, rgba(11,15,20,.95), rgba(11,15,20,.75));
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav { display:flex; align-items:center; justify-content:space-between; height:64px; }
-    .brand { display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.3px; }
-    .logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 8px 30px var(--ring); }
-    .links { display:flex; gap:18px; }
-    .btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; background: var(--bg-soft); color: var(--text); border:1px solid rgba(255,255,255,.06); box-shadow: 0 6px 18px var(--shadow); text-decoration:none; }
-    .btn:hover { background:#19222d; }
-
-    /* Hero */
-    .hero { padding: 64px 0 28px; }
-    .hero h1 { font-size: clamp(28px, 4.5vw, 48px); line-height: 1.15; margin: 0 0 14px; }
-    .hero p { color: var(--muted); margin: 0 0 22px; max-width: 60ch; }
-    .pill { display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; background: rgba(139,92,246,.12); border:1px solid rgba(139,92,246,.35); color:#e9ddff; font-weight:600; }
-
-    /* Section heading */
-    .section { padding: 28px 0; }
-    .section h2 { font-size: clamp(22px, 3.2vw, 32px); margin: 0 0 6px; }
-    .section p.lead { color: var(--muted); margin-top: 0; }
-
-    /* Grid */
-    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
-
-    /* Card */
-    .card { grid-column: span 12; background: linear-gradient(180deg, rgba(255,255,255,.02), transparent), var(--card); border: 1px solid rgba(255,255,255,.06); border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 30px var(--shadow); transition: transform .2s ease, box-shadow .2s ease; }
-    .card:hover { transform: translateY(-3px); box-shadow: 0 18px 50px var(--shadow); }
-    .media { aspect-ratio: 16/9; background: #0c1218; position: relative; overflow: hidden; }
-    .media img { position:absolute; inset:0; width:100%; height:100%; object-fit: cover; }
-    .content { padding: 18px; display:grid; gap: 12px; }
-    .title { display:flex; align-items:center; justify-content:space-between; gap: 10px; }
-    .title h3 { margin:0; font-size: 20px; }
-    .badges { display:flex; flex-wrap:wrap; gap:8px; }
-    .badge { padding:4px 10px; border-radius: 999px; font-size: 12px; background: rgba(110,231,245,.12); border:1px solid rgba(110,231,245,.35); color:#d9fbff; }
-    .desc { color: var(--muted); }
-    .actions { display:flex; gap:10px; flex-wrap:wrap; }
-
-    /* Responsive spans */
-    .span-6 { grid-column: span 12; }
-    @media (min-width: 800px) { .span-6 { grid-column: span 6; } }
-
-    /* Footer */
-    footer { padding: 40px 0 60px; color: var(--muted); text-align:center; }
-
-    /* Simple filter */
-    .filters { display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px; }
-    .chip { padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.08); background: var(--bg-soft); cursor:pointer; }
-    .chip[aria-pressed="true"] { outline:2px solid var(--ring); background:#182028; }
-    .hidden { display:none !important; }
-
-    /* Utility */
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:
+      radial-gradient(900px 600px at 100% -10%, rgba(139,92,246,.12), transparent 60%),
+      radial-gradient(800px 500px at -10% -10%, rgba(103,232,249,.10), transparent 50%),
+      var(--bg); color:var(--text); line-height:1.6}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 18px}
+    header{position:sticky;top:0;z-index:10;background:rgba(12,15,19,.7);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .logo{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 8px 24px rgba(139,92,246,.35)}
+    .links{display:flex;gap:14px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--soft);border:1px solid rgba(255,255,255,.06);color:var(--text)}
+    .btn:hover{background:#141b26}
+    .hero{padding:54px 0 28px}
+    h1{font-size:clamp(26px,4.5vw,46px);line-height:1.15;margin:0 0 8px}
+    .lead{color:var(--muted);max-width:65ch}
+    section{padding:30px 0}
+    h2{font-size:clamp(20px,3.2vw,30px);margin:0 0 8px}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,.02), transparent), var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:0 10px 30px var(--shadow)}
+    .card{padding:16px;border-radius:var(--radius)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .span-6{grid-column:span 12}
+    @media(min-width:800px){.span-6{grid-column:span 6}}
+    .media{aspect-ratio:16/9;background:#0b1118;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+    .media img{width:100%;height:100%;object-fit:cover}
+    .badges{display:flex;gap:8px;flex-wrap:wrap}
+    .badge{font-size:12px;padding:4px 10px;border-radius:999px;background:rgba(110,231,245,.12);border:1px solid rgba(110,231,245,.35);color:#d9fbff}
+    .codebox{background:#0a0f15;border:1px solid rgba(255,255,255,.08);border-radius:12px}
+    .runner{display:grid;gap:10px}
+    .runner textarea{width:100%;min-height:160px;background:#0a0f15;color:#e8eef6;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+    .runner pre{margin:0;max-height:220px;overflow:auto}
+    .tabs{display:flex;gap:10px;margin-bottom:10px}
+    .chip{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:var(--soft);cursor:pointer}
+    .chip[aria-pressed="true"]{outline:2px solid rgba(103,232,249,.35);background:#18222e}
+    footer{padding:40px 0 60px;color:var(--muted);text-align:center}
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <span>Your Name</span>
-      </div>
+      <div class="brand"><div class="logo" aria-hidden="true"></div><span>Maxwell Thompson</span></div>
       <nav class="links">
-        <a class="btn" href="#projects">Projects</a>
-        <a class="btn" href="#about">About</a>
-        <a class="btn" href="#contact">Contact</a>
+        <a class="btn" href="#landis">Landis+Gyr</a>
+        <a class="btn" href="#drone">Drone</a>
+        <a class="btn" href="#cs50">CS50 AI</a>
+        <a class="btn" href="#runner">Code Runner</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
     <section class="hero">
-      <span class="pill">Portfolio • Projects & Builds</span>
-      <h1>Showcasing real-world projects — code and beyond.</h1>
-      <p>From hardware builds like drones and fixtures to software experiments and essays. Each project has a quick summary, visuals, and links for a deeper dive.</p>
-      <div class="actions">
-        <a class="btn" href="#projects">Browse Projects</a>
-        <a class="btn" href="https://github.com/" target="_blank" rel="noopener">View GitHub</a>
+      <h1>Projects & Builds</h1>
+      <p class="lead">A single‑page snapshot of my recent work — from an FPV drone build to a testing UI at Landis+Gyr, plus a few CS50 AI projects. Simple. Visual. Linkable.</p>
+      <div class="badges" style="margin-top:10px">
+        <span class="badge">Hardware</span>
+        <span class="badge">Software</span>
+        <span class="badge">AI</span>
       </div>
     </section>
 
-    <!-- Featured project (full width) -->
-    <section class="section" id="featured">
-      <h2>Featured</h2>
-      <p class="lead">A flagship project you want front and center.</p>
+    <!-- Landis+Gyr section -->
+    <section id="landis">
+      <h2>Landis+Gyr — Test Fixture UI</h2>
+      <p class="lead">PyQt6 app that interfaces with serial instruments and CT hardware for automated testing (SCPI, I²C, GPIO). Includes jog sequencing and safe source activation.</p>
+      <div class="panel card">
+        <div class="grid">
+          <div class="span-6">
+            <div class="media"><img src="assets/dashboard.jpg" alt="Testing fixture UI screenshot"/></div>
+          </div>
+          <div class="span-6">
+            <ul>
+              <li>Manual control and scripted runs for current/voltage sources (SCPI over serial).</li>
+              <li>Non‑blocking waits; strict sequencing: force‑off → CT setup → routing → safe activation.</li>
+              <li>Logs, progress, and error handling for long‑running tests.</li>
+            </ul>
+            <p><a href="#" target="_blank" rel="noopener">Overview / Docs</a> · <a href="#" target="_blank" rel="noopener">Screenshots</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Drone section with YouTube embed -->
+    <section id="drone">
+      <h2>Custom FPV Drone</h2>
+      <p class="lead">From parts selection to PID tuning and test flights. Below: a short reel; right: build notes and BOM.</p>
+      <div class="panel card">
+        <div class="grid">
+          <div class="span-6">
+            <div class="media">
+              <!-- Replace VIDEO_ID with your YouTube id -->
+              <iframe width="100%" height="100%" style="aspect-ratio:16/9;border:0" src="https://www.youtube.com/embed/10lQD06BJFE" title="Drone flight test" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="span-6">
+            <h3 style="margin-top:0">Build Notes</h3>
+            <ul>
+              <li>5" frame, 2207 motors, BLHeli_32 ESC, F4 FC.</li>
+              <li>Betaflight PID tune; receiver failsafe + beeper.</li>
+              <li>Vibration mitigation with soft mounts, prop balance.</li>
+            </ul>
+            <p><a href="#" target="_blank" rel="noopener">Full write‑up</a> · <a href="#" target="_blank" rel="noopener">Gallery</a> · <a href="#" target="_blank" rel="noopener">Parts list</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CS50 AI projects -->
+    $1
+      <h2>CS50 AI Projects</h2>
+      <p class="lead">These live in a separate repository. Update the links below to point to your repo and project folders.</p>
       <div class="grid">
-        <article class="card" data-tags="hardware drone video">
-          <div class="media">
-            <!-- Replace with your image -->
-            <img src="assets/drone-hero.jpg" alt="Your custom FPV drone hovering over a field" />
-          </div>
-          <div class="content">
-            <div class="title">
-              <h3>Custom FPV Drone Build</h3>
-              <div class="badges">
-                <span class="badge">Hardware</span>
-                <span class="badge">Build Log</span>
-                <span class="badge">FPV</span>
-              </div>
-            </div>
-            <p class="desc">A from-scratch FPV quadcopter: frame selection, motor/ESC pairing, F4 flight controller tuning, and GoPro mounting. Includes test flights, bill of materials, and safety notes.</p>
-            <div class="actions">
-              <a class="btn" href="#" target="_blank" rel="noopener">Project Write‑up</a>
-              <a class="btn" href="#" target="_blank" rel="noopener">Demo Video</a>
-              <a class="btn" href="#" target="_blank" rel="noopener">Gallery</a>
-            </div>
-          </div>
+        <article class="panel card span-6">
+          <h3 style="margin-top:0">Tic‑Tac‑Toe Minimax</h3>
+          <p>Adversarial search with pruning; optimal play.</p>
+          <p>
+            <!-- TODO: replace USER/REPO and folder names -->
+            <a href="https://github.com/USER/CS50-REPO/tree/main/tictactoe" target="_blank" rel="noopener">Repo folder</a>
+            · <a href="https://raw.githubusercontent.com/USER/CS50-REPO/main/tictactoe/tictactoe.py" target="_blank" rel="noopener">Main script</a>
+          </p>
+        </article>
+        <article class="panel card span-6">
+          <h3 style="margin-top:0">PageRank</h3>
+          <p>Sampling and iterative algorithms; link structure & convergence.</p>
+          <p>
+            <a href="https://github.com/USER/CS50-REPO/tree/main/pagerank" target="_blank" rel="noopener">Repo folder</a>
+            · <a href="https://raw.githubusercontent.com/USER/CS50-REPO/main/pagerank/pagerank.py" target="_blank" rel="noopener">Main script</a>
+          </p>
+        </article>
+        <article class="panel card span-6">
+          <h3 style="margin-top:0">NLP: Intent Classifier</h3>
+          <p>Tokenization, TF‑IDF, and a simple classifier.</p>
+          <p>
+            <a href="https://github.com/USER/CS50-REPO/tree/main/intent" target="_blank" rel="noopener">Repo folder</a>
+            · <a href="https://raw.githubusercontent.com/USER/CS50-REPO/main/intent/intent.py" target="_blank" rel="noopener">Main script</a>
+          </p>
+        </article>
+        <article class="panel card span-6">
+          <h3 style="margin-top:0">Search: Crossword AI</h3>
+          <p>Constraint satisfaction with backtracking and AC‑3.</p>
+          <p>
+            <a href="https://github.com/USER/CS50-REPO/tree/main/crossword" target="_blank" rel="noopener">Repo folder</a>
+            · <a href="https://raw.githubusercontent.com/USER/CS50-REPO/main/crossword/generate.py" target="_blank" rel="noopener">Main script</a>
+          </p>
         </article>
       </div>
-    </section>
 
-    <!-- Project gallery with filters -->
-    <section class="section" id="projects">
-      <h2>Projects</h2>
-      <p class="lead">Filter by type to find what interests you.</p>
-      <div class="filters" role="toolbar" aria-label="Project filters">
-        <button class="chip" aria-pressed="true" data-filter="all">All</button>
-        <button class="chip" aria-pressed="false" data-filter="hardware">Hardware</button>
-        <button class="chip" aria-pressed="false" data-filter="software">Software</button>
-        <button class="chip" aria-pressed="false" data-filter="essay">Essay</button>
-        <button class="chip" aria-pressed="false" data-filter="video">Video</button>
+      <!-- Optional: show code from remote repo inside this page (read‑only) -->
+      <div class="panel card" style="margin-top:16px">
+        <h3 style="margin-top:0">Inline Code Preview (from remote repo)</h3>
+        <p class="lead">This fetches a raw file from your CS50 repo and displays it with syntax highlighting.</p>
+        <pre class="codebox"><code id="cs50-preview" class="language-python">Loading…</code></pre>
       </div>
+    $2
 
-      <div class="grid" id="project-grid">
-        <!-- CARD TEMPLATE: duplicate and customize -->
-        <article class="card span-6" data-tags="hardware drone">
-          <div class="media"><img src="assets/drone-closeup.jpg" alt="Close-up of drone motor and ESC wiring" /></div>
-          <div class="content">
-            <div class="title">
-              <h3>Drone: Wiring & Tuning</h3>
-              <div class="badges"><span class="badge">Hardware</span></div>
-            </div>
-            <p class="desc">Step-by-step phases for ESC calibration, PID tuning, receiver failsafe setup, and vibration mitigation.</p>
-            <div class="actions">
-              <a class="btn" href="#" target="_blank" rel="noopener">Guide</a>
-              <a class="btn" href="#" target="_blank" rel="noopener">Parts List</a>
-            </div>
+    <!-- Code Runner (client‑side) -->
+    <section id="runner">
+      <h2>Inline Code Runner (Client‑side)</h2>
+      <p class="lead">Run small code snippets directly in the browser. Python runs via <a href="https://pyodide.org/" target="_blank" rel="noopener">Pyodide</a> (WebAssembly); JavaScript runs natively. Great for demos, not heavy packages.</p>
+
+      <div class="panel card">
+        <div class="tabs" role="toolbar" aria-label="Language tabs">
+          <button class="chip" aria-pressed="true" data-lang="python">Python</button>
+          <button class="chip" aria-pressed="false" data-lang="javascript">JavaScript</button>
+        </div>
+
+        <!-- Python Runner -->
+        <div class="runner" data-block="python">
+          <textarea id="py-code">print("Hello from Pyodide!")
+for i in range(3):
+    print("tick", i)
+</textarea>
+          <div>
+            <button class="btn" id="py-run" disabled>Loading Python…</button>
+            <span id="py-status" class="lead" style="margin-left:8px;color:var(--muted)"></span>
           </div>
-        </article>
-
-        <article class="card span-6" data-tags="software web">
-          <div class="media"><img src="assets/dashboard.jpg" alt="Screenshot of analytics dashboard" /></div>
-          <div class="content">
-            <div class="title">
-              <h3>Testing Fixture UI</h3>
-              <div class="badges"><span class="badge">Software</span><span class="badge">UI</span></div>
-            </div>
-            <p class="desc">A PyQt6 app interfacing with serial instruments (voltage/current sources), GPIO, and I²C for routing and ranging.</p>
-            <div class="actions">
-              <a class="btn" href="#" target="_blank" rel="noopener">Overview</a>
-              <a class="btn" href="#" target="_blank" rel="noopener">Screenshots</a>
-            </div>
+          <div class="codebox">
+            <pre><code id="py-out" class="language-none"></code></pre>
           </div>
-        </article>
+        </div>
 
-        <article class="card span-6" data-tags="essay hardware">
-          <div class="media"><img src="assets/whitepaper.jpg" alt="Printed technical paper on a desk" /></div>
-          <div class="content">
-            <div class="title">
-              <h3>Design Notes: Current Transformer Safety</h3>
-              <div class="badges"><span class="badge">Essay</span><span class="badge">Hardware</span></div>
-            </div>
-            <p class="desc">A practical guide on sequencing sources off/on, non‑blocking waits, and safe activation—lessons learned from lab work.</p>
-            <div class="actions">
-              <a class="btn" href="#" target="_blank" rel="noopener">Read</a>
-            </div>
+        <!-- JavaScript Runner -->
+        <div class="runner" data-block="javascript" style="display:none">
+          <textarea id="js-code">console.log("Hello from JS!");
+[1,2,3].map(x => x*x).forEach(v => console.log(v));</textarea>
+          <div>
+            <button class="btn" id="js-run">Run JavaScript</button>
           </div>
-        </article>
-
-        <article class="card span-6" data-tags="video hardware">
-          <div class="media"><img src="assets/flight.jpg" alt="Drone in flight over campus" /></div>
-          <div class="content">
-            <div class="title">
-              <h3>Flight Test Reel</h3>
-              <div class="badges"><span class="badge">Video</span><span class="badge">Hardware</span></div>
-            </div>
-            <p class="desc">Compilation of test flights across different prop/motor combos, with notes on balance and throttle curves.</p>
-            <div class="actions">
-              <a class="btn" href="#" target="_blank" rel="noopener">Watch</a>
-            </div>
+          <div class="codebox">
+            <pre><code id="js-out" class="language-none"></code></pre>
           </div>
-        </article>
+        </div>
 
-      </div>
-
-      <!-- HOW TO ADD MORE PROJECTS
-        1) Duplicate any <article class="card ..."> block above.
-        2) Replace image src + alt, title, badges, description, and links.
-        3) Update data-tags (space-separated): e.g., "hardware drone", "software web", "essay".
-        4) Put your images in /assets and update paths.
-      -->
-    </section>
-
-    <section class="section" id="about">
-      <h2>About</h2>
-      <p class="lead">Brief bio and what you love building.</p>
-      <p>Write 2–3 sentences about your background and interests. Mention materials you’ve worked with (e.g., carbon frames, ESCs, SCPI-controlled sources, PyQt6 UIs) and what you’re exploring next.</p>
-    </section>
-
-    <section class="section" id="contact">
-      <h2>Contact</h2>
-      <p class="lead">Links & reach‑outs.</p>
-      <div class="actions">
-        <a class="btn" href="mailto:you@example.com">Email</a>
-        <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
-        <a class="btn" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        <p class="lead" style="margin-top:12px">Limits: browser‑only (no internet access), Python wheels are restricted to what Pyodide includes. For heavier demos, link a Colab or embed a Replit/StackBlitz.</p>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <small>© <span id="year"></span> Your Name. Built with HTML/CSS. Hosted on GitHub Pages.</small>
-    </div>
+    <div class="container"><small>© <span id="year"></span> Maxwell Thompson • Hosted on GitHub Pages</small></div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
   <script>
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Simple filter logic
-    const chips = document.querySelectorAll('.chip');
-    const cards = document.querySelectorAll('#project-grid .card');
+    // Tabs switching
+    const chips = document.querySelectorAll('.tabs .chip');
+    const blocks = document.querySelectorAll('[data-block]');
     chips.forEach(chip => {
       chip.addEventListener('click', () => {
-        chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
-        chip.setAttribute('aria-pressed', 'true');
-        const f = chip.dataset.filter;
-        cards.forEach(card => {
-          if (f === 'all') { card.classList.remove('hidden'); return; }
-          const tags = (card.dataset.tags || '').split(/\s+/);
-          card.classList.toggle('hidden', !tags.includes(f));
+        chips.forEach(c => c.setAttribute('aria-pressed','false'));
+        chip.setAttribute('aria-pressed','true');
+        const lang = chip.dataset.lang;
+        blocks.forEach(b => b.style.display = (b.dataset.block === lang) ? '' : 'none');
+      });
+    });
+
+    // JS Runner
+    const jsBtn = document.getElementById('js-run');
+    const jsCode = document.getElementById('js-code');
+    const jsOut = document.getElementById('js-out');
+    jsBtn?.addEventListener('click', () => {
+      jsOut.textContent = '';
+      const _log = console.log;
+      const lines = [];
+      console.log = (...args) => { lines.push(args.join(' ')); _log.apply(console, args); };
+      try {
+        new Function(jsCode.value)();
+      } catch (e) { lines.push('Error: ' + e.message); }
+      console.log = _log;
+      jsOut.textContent = lines.join('
+');
+      Prism.highlightElement(jsOut);
+    });
+  </script>
+  <!-- Pyodide loader -->
+  <script>
+    (async function(){
+      const status = document.getElementById('py-status');
+      const btn = document.getElementById('py-run');
+      try {
+        status.textContent = 'Fetching runtime (~5–10MB)…';
+        const pyodideSrc = 'https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js';
+        await new Promise((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = pyodideSrc; s.onload = resolve; s.onerror = () => reject(new Error('Failed to load Pyodide'));
+          document.head.appendChild(s);
         });
+        window.pyodide = await loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.24.1/full/' });
+        status.textContent = 'Ready';
+        btn.disabled = false;
+      } catch (e){
+        status.textContent = 'Load error: ' + e.message;
+      }
+    })();
+
+    // Python runner
+    window.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('py-run');
+      const code = document.getElementById('py-code');
+      const out = document.getElementById('py-out');
+      btn?.addEventListener('click', async () => {
+        out.textContent = '';
+        if (!window.pyodide){ out.textContent = 'Pyodide not loaded.'; return; }
+        try {
+          const result = await window.pyodide.runPythonAsync(code.value);
+          if (result !== undefined) {
+            out.textContent += String(result) + '
+';
+          }
+        } catch (e){
+          out.textContent = 'Error: ' + e.message;
+        }
+        Prism.highlightElement(out);
       });
     });
   </script>
+  <script>
+    // OPTIONAL: dynamically fetch a file from your CS50 repo and show it in the preview above.
+    // Replace the URL below with your raw file URL (raw.githubusercontent.com).
+    (async function(){
+      const el = document.getElementById('cs50-preview');
+      if (!el) return;
+      const RAW_URL = 'https://raw.githubusercontent.com/USER/CS50-REPO/main/tictactoe/tictactoe.py'; // TODO
+      try{
+        const r = await fetch(RAW_URL, { cache: 'no-store' });
+        if(!r.ok) throw new Error(r.status + ' ' + r.statusText);
+        el.textContent = await r.text();
+        Prism.highlightElement(el);
+      }catch(e){
+        el.textContent = 'Failed to load code. Update RAW_URL to your repo file. ('+ e.message +')';
+      }
+    })();
+  </script>
 </body>
 </html>
+
