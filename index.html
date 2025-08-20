@@ -6,6 +6,7 @@
   <title>My Projects Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 </head>
 <body class="bg-gray-100 text-gray-900">
   <div class="max-w-5xl mx-auto py-10 px-4 space-y-16">
@@ -13,39 +14,49 @@
     <!-- Landis+Gyr Section -->
     <section>
       <h2 class="text-3xl font-bold mb-4">Work at Landis+Gyr</h2>
-      <div class="mb-6">
-        <img src="assets/landis.jpg" alt="Landis+Gyr Project" class="w-full rounded-2xl shadow mb-4">
-        <p class="text-gray-700">Developed and implemented a user interface (UI) for an electrical meter testing fixture, focusing on both front-end design (display, buttons, layout) and integration with backend hardware systems.</p>
-      </div>
-
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <iframe class="w-full h-64 md:h-80 rounded-2xl shadow" src="https://www.youtube.com/embed/SWaoxzoS1Sw" frameborder="0" allowfullscreen></iframe>
-          <p class="text-sm text-gray-600 mt-2">This video shows a UI I developed that interfaces with an electrical meter testing fixture. It communicates with an Arduino, which translates UI commands into SCPI commands 
-            for the voltage and current sources stacked below the meters. The UI was originally written in C and I was tasked with translating it into Python.</p>
+          <div class="aspect-w-16 aspect-h-9">
+            <iframe class="w-full h-64 rounded-2xl shadow" src="https://www.youtube.com/embed/SWaoxzoS1Sw" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <p class="mt-2 text-gray-700 text-sm">
+            The video on the left shows a UI that I was developing that interfaces with an electrical meter testing fixture. I had to interface with an Arduino that translated commands from the UI to SCPI commands that are sent to the voltage and current sources stacked below the meters. The UI was originally written in C, and I was tasked with translating it into Python.
+          </p>
         </div>
         <div>
-          <iframe class="w-full h-64 md:h-80 rounded-2xl shadow" src="https://www.youtube.com/embed/bPGgacWYwlw" frameborder="0" allowfullscreen></iframe>
-          <p class="text-sm text-gray-600 mt-2">This video features a current transformer (CT) board that I helped design and for which I solely wrote the code to control the ballast resistors. This allowed for variable 
-            control of the output current when attached to three CTs, reaching up to 600 amps.</p>
+          <div class="aspect-w-16 aspect-h-9">
+            <iframe class="w-full h-64 rounded-2xl shadow" src="https://www.youtube.com/embed/bPGgacWYwlw" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <p class="mt-2 text-gray-700 text-sm">
+            The video on the right features a current transformer board that I took part in designing, and solely wrote the code to control the ballast resistors for variable control of the output current when the board is attached to the three CTs, going to a maximum of 600 amps.
+          </p>
         </div>
+      </div>
+      <div class="mt-6">
+        <img src="assets/landis.jpg" alt="Landis+Gyr Project" class="rounded-2xl shadow mx-auto max-w-lg">
       </div>
     </section>
 
     <!-- Drone Project Section -->
     <section>
       <h2 class="text-3xl font-bold mb-4">Drone Project</h2>
-      <p class="text-gray-700 mb-4">This project showcases my custom-built drone. Watch the video below. For a more detailed report of my drone project (and other various projects) please visit - https://mydeprojects.weebly.com/arduino-porject.html</p>
+      <p class="text-gray-700 mb-4">This project showcases my custom-built drone. Watch the video below:</p>
       <div class="aspect-w-16 aspect-h-9 mb-6">
         <iframe class="w-full h-96 rounded-2xl shadow" src="https://www.youtube.com/embed/10lQD06BJFE" frameborder="0" allowfullscreen></iframe>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <img src="assets/drone/img-0767.jpg" alt="Drone Image 1" class="rounded-2xl shadow">
-        <img src="assets/drone/img-0792.jpg" alt="Drone Image 2" class="rounded-2xl shadow">
-        <img src="assets/drone/img-0813.jpg" alt="Drone Image 3" class="rounded-2xl shadow">
-        <img src="assets/drone/img-0815.jpg" alt="Drone Image 4" class="rounded-2xl shadow">
-        <img src="assets/drone/img-0821.jpg" alt="Drone Image 5" class="rounded-2xl shadow">
-        <img src="assets/drone/img-0825_orig.jpg" alt="Drone Image 6" class="rounded-2xl shadow">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <img src="assets/drone/img-0767.jpg" class="rounded-2xl shadow" alt="Drone Image 1">
+        <img src="assets/drone/img-0792.jpg" class="rounded-2xl shadow" alt="Drone Image 2">
+        <img src="assets/drone/img-0813.jpg" class="rounded-2xl shadow" alt="Drone Image 3">
+        <img src="assets/drone/img-0815.jpg" class="rounded-2xl shadow" alt="Drone Image 4">
+        <img src="assets/drone/img-0821.jpg" class="rounded-2xl shadow" alt="Drone Image 5">
+        <img src="assets/drone/img-0825_orig.jpg" class="rounded-2xl shadow" alt="Drone Image 6">
+      </div>
+      <div class="mt-8 p-4 bg-white rounded-2xl shadow text-center">
+        <img src="assets/IMG_4627.jpg" alt="Drone frame CAD model" class="rounded-2xl shadow mx-auto mb-4 max-w-lg">
+        <p class="text-gray-700">
+          In addition, during my work at Johns Hopkins Applied Physics Lab, I CAD-modeled this drone frame from scratch. (I would show the CAD file, but they did not allow me to transfer files from that computer onto a personal one.)
+        </p>
       </div>
     </section>
 
@@ -56,22 +67,22 @@
         <div class="p-4 bg-white rounded-2xl shadow">
           <h3 class="text-xl font-semibold mb-2">Degrees</h3>
           <p class="text-gray-600 mb-2">Search for shortest path of relationships in a dataset of actors and movies (CS50 AI Project).</p>
-          <a href="https://github.com/max35243524-ops/cs50/tree/main/degrees" target="_blank" class="text-blue-600 hover:underline">View Code on GitHub</a>
+          <a href="https://github.com/max35243524-ops/cs50/tree/main/degrees" target="_blank" class="text-blue-600 hover:underline">View Code</a>
         </div>
         <div class="p-4 bg-white rounded-2xl shadow">
           <h3 class="text-xl font-semibold mb-2">Knights</h3>
           <p class="text-gray-600 mb-2">Solve logic puzzles using propositional logic (CS50 AI Project).</p>
-          <a href="https://github.com/max35243524-ops/cs50/tree/main/knights" target="_blank" class="text-blue-600 hover:underline">View Code on GitHub</a>
+          <a href="https://github.com/max35243524-ops/cs50/tree/main/knights" target="_blank" class="text-blue-600 hover:underline">View Code</a>
         </div>
         <div class="p-4 bg-white rounded-2xl shadow">
           <h3 class="text-xl font-semibold mb-2">Minesweeper</h3>
           <p class="text-gray-600 mb-2">Build an AI that plays the classic Minesweeper game intelligently (CS50 AI Project).</p>
-          <a href="https://github.com/max35243524-ops/cs50/tree/main/minesweeper" target="_blank" class="text-blue-600 hover:underline">View Code on GitHub</a>
+          <a href="https://github.com/max35243524-ops/cs50/tree/main/minesweeper" target="_blank" class="text-blue-600 hover:underline">View Code</a>
         </div>
         <div class="p-4 bg-white rounded-2xl shadow">
           <h3 class="text-xl font-semibold mb-2">Tic Tac Toe</h3>
           <p class="text-gray-600 mb-2">Implement a minimax AI that plays Tic Tac Toe optimally (CS50 AI Project).</p>
-          <a href="https://github.com/max35243524-ops/cs50/tree/main/tictactoe" target="_blank" class="text-blue-600 hover:underline">View Code on GitHub</a>
+          <a href="https://github.com/max35243524-ops/cs50/tree/main/tictactoe" target="_blank" class="text-blue-600 hover:underline">View Code</a>
         </div>
       </div>
     </section>
